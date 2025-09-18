@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { base } from '$app/paths';
 
   let { audioPath, title } = $props();
 
@@ -67,9 +68,9 @@
   <h2 class="text-xl font-semibold text-gray-800 text-center">{title}</h2>
 
   <audio bind:this={audio} preload="auto">
-    <source src={audioPath} type="audio/mpeg">
-    <source src={audioPath} type="audio/wav">
-    <source src={audioPath} type="audio/ogg">
+    <source src={base + audioPath} type="audio/mpeg">
+    <source src={base + audioPath} type="audio/wav">
+    <source src={base + audioPath} type="audio/ogg">
     Your browser does not support the audio element.
   </audio>
 
