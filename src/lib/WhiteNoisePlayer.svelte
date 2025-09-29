@@ -2,13 +2,36 @@
   import { onMount } from 'svelte';
   import { base } from '$app/paths';
 
-  let { audioPath, title } = $props();
+  let { audioPath, title, isPlaying: propIsPlaying = false, volume: propVolume = 0.5, onPlayingChange, onVolumeChange } = $props();
 
   let audio = $state();
-  let isPlaying = $state(false);
-  let volume = $state(0.5);
+  let isPlaying = $state(propIsPlaying);
+  let volume = $state(propVolume);
   let isLoaded = $state(false);
   let error = $state(null);
+
+  $effect(() => {
+    if (audio && isLoaded) {
+      if (propIsPlaying && !isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+        }).catch(() => {
+          error = 'Failed to play audio';
+          isPlaying = false;
+        });
+      } else if (!propIsPlaying && isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      }
+    }
+  });
+
+  $effect(() => {
+    volume = propVolume;
+    if (audio) {
+      audio.volume = volume;
+    }
+  });
 
   onMount(() => {
     if (audio) {
@@ -46,12 +69,15 @@
     if (isPlaying) {
       audio.pause();
       isPlaying = false;
+      onPlayingChange?.(false);
     } else {
       audio.play().then(() => {
         isPlaying = true;
+        onPlayingChange?.(true);
       }).catch(() => {
         error = 'Failed to play audio';
         isPlaying = false;
+        onPlayingChange?.(false);
       });
     }
   }
@@ -61,11 +87,12 @@
     if (audio) {
       audio.volume = volume;
     }
+    onVolumeChange?.(volume);
   }
 </script>
 
-<div class="w-full bg-[#F4BB44] max-w-md mx-auto rounded-lg p-6 space-y-4">
-  <h2 class="text-xl font-semibold text-gray-800 text-center">{title}</h2>
+<div class="w-full {isPlaying ? 'bg-[#ff5860]' : 'bg-[#F4BB44]'} max-w-md mx-auto rounded-lg p-6 space-y-4">
+  <h2 class="text-xl font-semibold text-black text-center">{title}</h2>
 
   <audio bind:this={audio} preload="auto">
     <source src={base + audioPath} type="audio/mpeg">
@@ -82,7 +109,7 @@
     <button
       onclick={togglePlayPause}
       disabled={!isLoaded}
-      class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-200 {isLoaded ? 'bg-[#FFDB58] hover:bg-[#958567]' : 'bg-gray-300'} text-[#ff8d00] disabled:cursor-not-allowed"
+      class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-200 {isLoaded ? 'bg-[#FFDB58]' : 'bg-gray-300'} text-[#ff8d00] disabled:cursor-not-allowed"
     >
       {#if !isLoaded}
         <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
