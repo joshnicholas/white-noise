@@ -7,7 +7,9 @@
     rain: { isPlaying: false, volume: 0.5 },
     coffeeshop: { isPlaying: false, volume: 0.5 },
     vicmarket: { isPlaying: false, volume: 0.5 },
-    statelibrary: { isPlaying: false, volume: 0.5 }
+    statelibrary: { isPlaying: false, volume: 0.5 },
+    galleface: { isPlaying: false, volume: 0.5 },
+    royalexhibition: { isPlaying: false, volume: 0.5 }
   });
 
   let selectedDefault = $state(null);
@@ -23,7 +25,9 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
         rain: { isPlaying: true, volume: 0.7 },
         coffeeshop: { isPlaying: true, volume: 0.3 },
         vicmarket: { isPlaying: false, volume: 0.5 },
-        statelibrary: { isPlaying: false, volume: 0.5 }
+        statelibrary: { isPlaying: false, volume: 0.5 },
+        galleface: { isPlaying: false, volume: 0.5 },
+        royalexhibition: { isPlaying: false, volume: 0.5 }
       }
     },
     {
@@ -34,7 +38,9 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
         rain: { isPlaying: true, volume: 0.5 },
         coffeeshop: { isPlaying: false, volume: 0.5 },
         vicmarket: { isPlaying: false, volume: 0.5 },
-        statelibrary: { isPlaying: true, volume: 0.9 }
+        statelibrary: { isPlaying: true, volume: 0.9 },
+        galleface: { isPlaying: false, volume: 0.5 },
+        royalexhibition: { isPlaying: false, volume: 0.5 }
       }
     },
     {
@@ -45,7 +51,9 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
         rain: { isPlaying: false, volume: 0.5 },
         coffeeshop: { isPlaying: false, volume: 0.5 },
         vicmarket: { isPlaying: true, volume: 0.9 },
-        statelibrary: { isPlaying: false, volume: 0.5 }
+        statelibrary: { isPlaying: false, volume: 0.5 },
+        galleface: { isPlaying: false, volume: 0.5 },
+        royalexhibition: { isPlaying: false, volume: 0.5 }
       }
     }
   ];
@@ -59,7 +67,9 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
         rain: { isPlaying: false, volume: currentSettings.rain.volume },
         coffeeshop: { isPlaying: false, volume: currentSettings.coffeeshop.volume },
         vicmarket: { isPlaying: false, volume: currentSettings.vicmarket.volume },
-        statelibrary: { isPlaying: false, volume: currentSettings.statelibrary.volume }
+        statelibrary: { isPlaying: false, volume: currentSettings.statelibrary.volume },
+        galleface: { isPlaying: false, volume: currentSettings.galleface.volume },
+        royalexhibition: { isPlaying: false, volume: currentSettings.royalexhibition.volume }
       };
       selectedDefault = null;
     } else {
@@ -83,7 +93,9 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
       rain: { isPlaying: false, volume: 0.5 },
       coffeeshop: { isPlaying: false, volume: 0.5 },
       vicmarket: { isPlaying: false, volume: 0.5 },
-      statelibrary: { isPlaying: false, volume: 0.5 }
+      statelibrary: { isPlaying: false, volume: 0.5 },
+      galleface: { isPlaying: false, volume: 0.5 },
+      royalexhibition: { isPlaying: false, volume: 0.5 }
     };
     selectedDefault = null;
   }
@@ -105,6 +117,42 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
     </div>
 
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+
+            <WhiteNoisePlayer
+        audioPath="/audio/vicmarket.mp3"
+        title="Vic Market"
+        isPlaying={currentSettings.vicmarket.isPlaying}
+        volume={currentSettings.vicmarket.volume}
+        onPlayingChange={(isPlaying) => updatePlayerState('vicmarket', 'isPlaying', isPlaying)}
+        onVolumeChange={(volume) => updatePlayerState('vicmarket', 'volume', volume)}
+      />
+
+      <WhiteNoisePlayer
+        audioPath="/audio/statelibrary.mp3"
+        title="Vic State Library"
+        isPlaying={currentSettings.statelibrary.isPlaying}
+        volume={currentSettings.statelibrary.volume}
+        onPlayingChange={(isPlaying) => updatePlayerState('statelibrary', 'isPlaying', isPlaying)}
+        onVolumeChange={(volume) => updatePlayerState('statelibrary', 'volume', volume)}
+      />
+
+            <WhiteNoisePlayer
+        audioPath="/audio/galleface.mp3"
+        title="Galle Face"
+        isPlaying={currentSettings.galleface.isPlaying}
+        volume={currentSettings.galleface.volume}
+        onPlayingChange={(isPlaying) => updatePlayerState('galleface', 'isPlaying', isPlaying)}
+        onVolumeChange={(volume) => updatePlayerState('galleface', 'volume', volume)}
+      />
+
+                  <WhiteNoisePlayer
+        audioPath="/audio/royalexhibitionfountain.mp3"
+        title="Royal Exhibition Fountain"
+        isPlaying={currentSettings.royalexhibition.isPlaying}
+        volume={currentSettings.royalexhibition.volume}
+        onPlayingChange={(isPlaying) => updatePlayerState('royalexhibition', 'isPlaying', isPlaying)}
+        onVolumeChange={(volume) => updatePlayerState('royalexhibition', 'volume', volume)}
+      />
 
       <WhiteNoisePlayer
         audioPath="/audio/seaside.mp3"
@@ -141,23 +189,7 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
         onVolumeChange={(volume) => updatePlayerState('coffeeshop', 'volume', volume)}
       />
 
-            <WhiteNoisePlayer
-        audioPath="/audio/vicmarket.mp3"
-        title="Vic Market"
-        isPlaying={currentSettings.vicmarket.isPlaying}
-        volume={currentSettings.vicmarket.volume}
-        onPlayingChange={(isPlaying) => updatePlayerState('vicmarket', 'isPlaying', isPlaying)}
-        onVolumeChange={(volume) => updatePlayerState('vicmarket', 'volume', volume)}
-      />
 
-      <WhiteNoisePlayer
-        audioPath="/audio/statelibrary.mp3"
-        title="State Library"
-        isPlaying={currentSettings.statelibrary.isPlaying}
-        volume={currentSettings.statelibrary.volume}
-        onPlayingChange={(isPlaying) => updatePlayerState('statelibrary', 'isPlaying', isPlaying)}
-        onVolumeChange={(volume) => updatePlayerState('statelibrary', 'volume', volume)}
-      />
 
     </div>
 

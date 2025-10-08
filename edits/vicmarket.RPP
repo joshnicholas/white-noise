@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.46/macOS-arm64" 1759181532
+<REAPER_PROJECT 0.1 "7.46/macOS-arm64" 1759957573
   <NOTES 0 2
   >
   RIPPLE 0 0
@@ -19,7 +19,7 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 34
+  CURSOR 52.37212670758432
   ZOOM 11.53285226266229 0 0
   VZOOMEX 6 0
   USE_REC_CFG 0
@@ -35,14 +35,13 @@
   >
   RENDER_FILE /Users/josh/Github/white-noise/src
   RENDER_PATTERN $project
-  RENDER_FMT 0 1 44100
+  RENDER_FMT 0 1 32000
   RENDER_1X 0
   RENDER_RANGE 1 0 0 0 1000
   RENDER_RESAMPLE 3 0 1
   RENDER_ADDTOPROJ 0
   RENDER_STEMS 0
   RENDER_DITHER 0
-  RENDER_TRIM 0 0 0 0
   TIMELOCKMODE 1
   TEMPOENVLOCKMODE 1
   ITEMMIX 1
@@ -92,7 +91,7 @@
   >
   <TEMPOENVEX
     EGUID {BEB506C1-F741-214C-8AB8-676EDC65257C}
-    ACT 1 -1
+    ACT 0 -1
     VIS 1 0 1
     LANEHEIGHT 0 0
     ARM 0
@@ -106,7 +105,7 @@
     BEAT -1
     AUTOMODE 0
     PANLAWFLAGS 3
-    VOLPAN 1 0 -1 -1 1
+    VOLPAN 1.66917422443258 0 -1 -1 1
     MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
@@ -145,7 +144,7 @@
       GUID {B2CF01EA-73F7-DD48-B5AE-A88B957F71C6}
       <SOURCE VIDEO
         FLIP 0 1
-        FILE "/Users/josh/Downloads/VIC market walk.m4a"
+        FILE "Media/VIC market walk.m4a"
       >
     >
     <ITEM
@@ -168,7 +167,7 @@
       GUID {D8EE05E0-A8FB-5041-81DF-608029FC1F4A}
       <SOURCE VIDEO
         FLIP 0 1
-        FILE "/Users/josh/Downloads/VIC market walk.m4a"
+        FILE "Media/VIC market walk.m4a"
       >
     >
     <ITEM
@@ -191,7 +190,7 @@
       GUID {D7B3B8D4-DFC8-714D-820C-B765315129A4}
       <SOURCE VIDEO
         FLIP 0 1
-        FILE "/Users/josh/Downloads/VIC market walk.m4a"
+        FILE "Media/VIC market walk.m4a"
       >
     >
     <ITEM
@@ -214,7 +213,7 @@
       GUID {D1A85981-4CFF-C54F-B260-24F3F7F4035E}
       <SOURCE VIDEO
         FLIP 0 1
-        FILE "/Users/josh/Downloads/VIC market walk.m4a"
+        FILE "Media/VIC market walk.m4a"
       >
     >
   >
