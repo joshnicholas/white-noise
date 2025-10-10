@@ -105,7 +105,9 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
   <div class="max-w-4xl mx-auto">
     <h1 class="text-4xl font-bold text-center text-black mb-8">Nona Nona Nonaaaaaa</h1>
 
-    <div class="flex justify-center gap-4 mb-8">
+    <h2 class="text-2xl font-semibold text-center text-black mb-4">Presets:</h2>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
       {#each defaultPresets as preset}
         <button
           onclick={() => applyDefault(preset.name)}
@@ -114,17 +116,25 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
           {preset.name}
         </button>
       {/each}
+      <div class="w-full sm:w-auto flex justify-center">
+        <button
+          onclick={resetAll}
+          class="px-8 py-3 bg-[#f49644] text-black font-semibold rounded-lg transition-colors"
+        >
+          Reset
+        </button>
+      </div>
     </div>
 
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
 
             <WhiteNoisePlayer
-        audioPath="/audio/vicmarket.mp3"
-        title="Vic Market"
-        isPlaying={currentSettings.vicmarket.isPlaying}
-        volume={currentSettings.vicmarket.volume}
-        onPlayingChange={(isPlaying) => updatePlayerState('vicmarket', 'isPlaying', isPlaying)}
-        onVolumeChange={(volume) => updatePlayerState('vicmarket', 'volume', volume)}
+        audioPath="/audio/galleface.mp3"
+        title="Galle Face"
+        isPlaying={currentSettings.galleface.isPlaying}
+        volume={currentSettings.galleface.volume}
+        onPlayingChange={(isPlaying) => updatePlayerState('galleface', 'isPlaying', isPlaying)}
+        onVolumeChange={(volume) => updatePlayerState('galleface', 'volume', volume)}
       />
 
       <WhiteNoisePlayer
@@ -136,14 +146,16 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
         onVolumeChange={(volume) => updatePlayerState('statelibrary', 'volume', volume)}
       />
 
-            <WhiteNoisePlayer
-        audioPath="/audio/galleface.mp3"
-        title="Galle Face"
-        isPlaying={currentSettings.galleface.isPlaying}
-        volume={currentSettings.galleface.volume}
-        onPlayingChange={(isPlaying) => updatePlayerState('galleface', 'isPlaying', isPlaying)}
-        onVolumeChange={(volume) => updatePlayerState('galleface', 'volume', volume)}
+                  <WhiteNoisePlayer
+        audioPath="/audio/vicmarket.mp3"
+        title="Vic Market"
+        isPlaying={currentSettings.vicmarket.isPlaying}
+        volume={currentSettings.vicmarket.volume}
+        onPlayingChange={(isPlaying) => updatePlayerState('vicmarket', 'isPlaying', isPlaying)}
+        onVolumeChange={(volume) => updatePlayerState('vicmarket', 'volume', volume)}
       />
+
+
 
                   <WhiteNoisePlayer
         audioPath="/audio/royalexhibitionfountain.mp3"
@@ -191,15 +203,6 @@ $effect(() =>{ console.log("currentSettings: ", currentSettings)})
 
 
 
-    </div>
-
-    <div class="flex justify-center mt-12">
-      <button
-        onclick={resetAll}
-        class="px-8 py-3 bg-[#F4BB44] text-black font-semibold rounded-lg transition-colors"
-      >
-        Reset
-      </button>
     </div>
 
     <!-- <div class="mt-12 text-center text-gray-600">
